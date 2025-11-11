@@ -56,8 +56,8 @@ const WhyChooseCoderlity = () => {
               {features.map((item, index) => (
                 <Card
                   key={index}
-                  className="mb-3 p-3 shadow-sm border-0 d-flex flex-row align-items-start"
-                  style={{ borderRadius: "15px" }}
+                  className="mb-3 p-4 shadow-sm border-0 d-flex flex-row align-items-start"
+                  style={{ borderRadius: "15px", backgroundColor: "#E9EAF0" }}
                 >
                   <div
                     className="me-3 d-flex align-items-center justify-content-center"
@@ -88,7 +88,7 @@ const WhyChooseCoderlity = () => {
                 style={{
                   border: "4px solid #cfe2ff",
                   width: "100%",
-                  maxHeight: "550px",
+                  maxHeight: "570px",
                   objectFit: "cover",
                   borderTopLeftRadius: "100px",
                   borderBottomRightRadius: "100px",
