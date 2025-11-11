@@ -34,3 +34,87 @@ code {
   width: 2rem;
   height: 2rem;
 }
+
+/* For Slick Carousel */
+
+#testimonials {
+  background: #f9fbff;
+}
+
+.testimonial-card {
+  background-color: #ffffff;
+  transition: all 0.3s ease;
+  border: 1px solid #e5e9f2;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.quote-icon {
+  font-size: 40px;
+  color: #007bff;
+  line-height: 1;
+}
+
+.slick-dots li button:before {
+  color: #007bff !important;
+  font-size: 10px;
+}
+
+.slick-dots li.slick-active button:before {
+  color: #0056b3 !important;
+}
+
+@media (max-width: 768px) {
+  .testimonial-card {
+    margin-bottom: 1rem;
+  }
+}
+
+/* Divider */
+.divider-line-choose-us {
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    #1e6fff 50%,
+    transparent 100%
+  );
+  margin: 1rem auto;
+  max-width: 800px;
+}
+.divider-line-technologies {
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    #1e6fff 50%,
+    transparent 100%
+  );
+  margin: 1rem auto;
+  max-width: 800px;
+}
+.divider-line-services {
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    #1e6fff 50%,
+    transparent 100%
+  );
+  margin: 1rem auto;
+  max-width: 800px;
+}
+.divider-line-services-tabs {
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    #1e6fff 50%,
+    transparent 100%
+  );
+  margin: 1rem auto;
+  max-width: 800px;
+}

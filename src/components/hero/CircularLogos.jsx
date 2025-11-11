@@ -1,32 +1,20 @@
 import { useEffect } from "react";
 import { motion, useAnimation, useMotionValue } from "motion/react";
-import "./CircularLogos.css";
 
-const logos = [
-  "/logos/react.png",
-  "/logos/node.png",
-  "/logos/next.png",
-  "/logos/js.png",
-  "/logos/css.png",
-  "/logos/html.png",
-  "/logos/wordpress.png",
-];
+// Import all images
+import one from "../../assets/hero/1.png";
+import laravel from "../../assets/hero/laravel.png";
+import erp from "../../assets/hero/erp.png";
+import figma from "../../assets/hero/figma.png";
+import flutter from "../../assets/hero/flutter.png";
+import node from "../../assets/hero/node.png";
+import wordpress from "../../assets/hero/wordpress.png";
+import react from "../../assets/hero/react.png";
+import up from "../../assets/hero/up.png";
 
-const getRotationTransition = (duration, from, loop = true) => ({
-  from,
-  to: from + 360,
-  ease: "linear",
-  duration,
-  type: "tween",
-  repeat: loop ? Infinity : 0,
-});
+const logos = [one, node, flutter, laravel, erp, figma, react, wordpress, up];
 
-const getTransition = (duration, from) => ({
-  rotate: getRotationTransition(duration, from),
-  scale: { type: "spring", damping: 20, stiffness: 300 },
-});
-
-const CircularLogos = ({ spinDuration = 25 }) => {
+const CircularLogos = ({ spinDuration = 25, radius = 160 }) => {
   const controls = useAnimation();
   const rotation = useMotionValue(0);
 
@@ -34,37 +22,71 @@ const CircularLogos = ({ spinDuration = 25 }) => {
     const start = rotation.get();
     controls.start({
       rotate: start + 360,
-      scale: 1,
-      transition: getTransition(spinDuration, start),
+      transition: {
+        duration: spinDuration,
+        ease: "linear",
+        repeat: Infinity,
+      },
     });
-  }, [spinDuration, controls, rotation]);
+  }, [controls, rotation, spinDuration]);
 
   return (
-    <div className="relative flex justify-center items-center">
+    <div
+      className="position-relative d-flex justify-content-center align-items-center"
+      style={{
+        width: `${radius * 3}px`,
+        height: `${radius * 3}px`,
+        margin: "auto",
+      }}
+    >
+      {/* Rotating outer logos */}
       <motion.div
-        className="circular-logos"
+        className="position-absolute"
         style={{ rotate: rotation }}
-        initial={{ rotate: 0 }}
         animate={controls}
       >
         {logos.map((logo, i) => {
-          const rotationDeg = (360 / logos.length) * i;
-          const transform = `rotate(${rotationDeg}deg) translate(160px) rotate(-${rotationDeg}deg)`;
+          const angle = (360 / logos.length) * i;
+          const transform = `rotate(${angle}deg) translate(${radius}px) rotate(-${angle}deg)`;
+
           return (
-            <img
+            <motion.img
               key={i}
               src={logo}
               alt={`logo-${i}`}
-              className="logo absolute w-12 h-12 object-contain"
-              style={{ transform }}
+              className="position-absolute rounded-circle shadow-sm"
+              style={{
+                transform,
+                width: "80px",
+                height: "80px",
+                objectFit: "contain",
+                background: "white",
+                padding: "8px",
+              }}
+              transition={{ type: "spring", stiffness: 200, damping: 10 }}
             />
           );
         })}
       </motion.div>
 
-      {/* Center logo */}
-      <div className="absolute w-28 h-28 bg-white rounded-full shadow-lg flex items-center justify-center">
-        <img src="/logos/main-logo.png" alt="center" className="w-16 h-16" />
+      {/* Center fixed logo */}
+      <div
+        className="position-absolute d-flex justify-content-center align-items-center rounded-circle shadow-lg bg-white"
+        style={{
+          width: "130px",
+          height: "130px",
+          zIndex: 2,
+        }}
+      >
+        <img
+          src={node}
+          alt="center-logo"
+          style={{
+            width: "90px",
+            height: "90px",
+            objectFit: "contain",
+          }}
+        />
       </div>
     </div>
   );

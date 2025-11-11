@@ -1,11 +1,14 @@
-import React from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
+import CircularLogos from "./CircularLogos";
+import ScrollDown from "../scroll/ScrollDown";
 
 const WebDevelopmentServices = () => {
   return (
     <section
-      className="container-fluid bg-light py-5"
-      style={{ background: "linear-gradient(to bottom, #ffffff, #e6f0ff)" }}
+      className="container-fluid bg-light py-5 position-relative"
+      style={{
+        background: "linear-gradient(to bottom, #ffffff, #e6f0ff)",
+        minHeight: "calc(100vh - 300px)",
+      }}
     >
       <div className="container">
         <div className="row align-items-center">
@@ -19,107 +22,22 @@ const WebDevelopmentServices = () => {
               the expertise to deliver outstanding results.
             </p>
           </div>
-          {/* Right part: Icons */}
+
+          {/* Right part: Rotating logos */}
           <div
             className="col-md-6 position-relative"
             style={{ height: "300px" }}
           >
-            {/* Central icon */}
-            <div className="position-absolute top-50 start-50 translate-middle bg-dark rounded-circle p-3">
-              <img
-                src="https://via.placeholder.com/80?text=Monitor"
-                alt="Monitor"
-                className="img-fluid"
-              />
-            </div>
-            {/* Orbiting icons - using absolute positioning for simplicity */}
-            <div
-              className="position-absolute"
-              style={{ top: "0", left: "calc(50% - 40px)" }}
-            >
-              <img
-                src="https://via.placeholder.com/40?text=Flutter"
-                alt="Flutter"
-                className="rounded-circle"
-              />
-            </div>
-            <div
-              className="position-absolute"
-              style={{ top: "20%", right: "20%" }}
-            >
-              <img
-                src="https://via.placeholder.com/40?text=WP"
-                alt="WordPress"
-                className="rounded-circle"
-              />
-            </div>
-            <div
-              className="position-absolute"
-              style={{ top: "50%", right: "10%" }}
-            >
-              <img
-                src="https://via.placeholder.com/40?text=GCP"
-                alt="GCP"
-                className="rounded-circle"
-              />
-            </div>
-            <div
-              className="position-absolute"
-              style={{ bottom: "20%", right: "20%" }}
-            >
-              <img
-                src="https://via.placeholder.com/40?text=Unity"
-                alt="Unity"
-                className="rounded-circle"
-              />
-            </div>
-            <div
-              className="position-absolute"
-              style={{ bottom: "0", left: "calc(50% - 40px)" }}
-            >
-              <img
-                src="https://via.placeholder.com/40?text=Figma"
-                alt="Figma"
-                className="rounded-circle"
-              />
-            </div>
-            <div
-              className="position-absolute"
-              style={{ bottom: "20%", left: "20%" }}
-            >
-              <img
-                src="https://via.placeholder.com/40?text=Symfony"
-                alt="Symfony"
-                className="rounded-circle"
-              />
-            </div>
-            <div
-              className="position-absolute"
-              style={{ top: "50%", left: "10%" }}
-            >
-              <img
-                src="https://via.placeholder.com/40?text=React"
-                alt="React"
-                className="rounded-circle"
-              />
-            </div>
-            <div
-              className="position-absolute"
-              style={{ top: "20%", left: "20%" }}
-            >
-              <img
-                src="https://via.placeholder.com/40?text=Analytics"
-                alt="Analytics"
-                className="rounded-circle"
-              />
-            </div>
-            {/* Add more icons as needed to match the image */}
+            <CircularLogos />
           </div>
         </div>
-        <div className="text-center mt-4">
-          <button className="btn btn-primary rounded-pill px-4 py-2">
-            Scroll Down <i className="bi bi-arrow-down"></i>
-          </button>
+
+        {/* ScrollDown at the bottom */}
+        <div
+          className="position-absolute start-50 translate-middle-x"
+          style={{ bottom: "0px" }}
+        >
+          <ScrollDown />
         </div>
       </div>
     </section>

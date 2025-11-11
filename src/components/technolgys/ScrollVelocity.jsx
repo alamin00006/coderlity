@@ -27,9 +27,11 @@ function useElementWidth(ref) {
 
 export const ScrollVelocity = ({
   scrollContainerRef,
-  texts = [],
+  logos = [],
   velocity = 100,
+  direction = "left", // "left", "right", or "alternate"
   className = "",
+  logoClassName = "velocity-logo",
   damping = 50,
   stiffness = 400,
   numCopies = 6,
@@ -38,12 +40,15 @@ export const ScrollVelocity = ({
   scrollerClassName = "scroller",
   parallaxStyle,
   scrollerStyle,
+  logoSpacing = "2rem",
 }) => {
-  function VelocityText({
-    children,
+  function VelocityLogos({
+    logos,
     baseVelocity = velocity,
+    direction = "left",
     scrollContainerRef,
     className = "",
+    logoClassName = "velocity-logo",
     damping,
     stiffness,
     numCopies,
@@ -52,6 +57,7 @@ export const ScrollVelocity = ({
     scrollerClassName,
     parallaxStyle,
     scrollerStyle,
+    logoSpacing = "2rem",
   }) {
     const baseX = useMotionValue(0);
     const scrollOptions = scrollContainerRef
@@ -84,23 +90,50 @@ export const ScrollVelocity = ({
     });
 
     const directionFactor = useRef(1);
-    useAnimationFrame((t, delta) => {
-      let moveBy = directionFactor.current * baseVelocity * (delta / 1000);
-      if (velocityFactor.get() < 0) {
+
+    // Set initial direction based on prop
+    useLayoutEffect(() => {
+      if (direction === "right") {
         directionFactor.current = -1;
-      } else if (velocityFactor.get() > 0) {
+      } else if (direction === "left") {
         directionFactor.current = 1;
       }
+      // For "alternate", we start with left (1) by default
+    }, [direction]);
+
+    useAnimationFrame((t, delta) => {
+      let moveBy = directionFactor.current * baseVelocity * (delta / 1000);
+
+      // Handle scroll velocity direction
+      if (velocityFactor.get() < 0) {
+        directionFactor.current = direction === "right" ? 1 : -1;
+      } else if (velocityFactor.get() > 0) {
+        directionFactor.current = direction === "right" ? -1 : 1;
+      }
+
       moveBy += directionFactor.current * moveBy * velocityFactor.get();
       baseX.set(baseX.get() + moveBy);
     });
 
+    // Render logos with spacing
+    const renderLogos = () => {
+      return logos.map((logo, index) => (
+        <div
+          key={index}
+          className="logo-item"
+          style={{ marginRight: logoSpacing }}
+        >
+          <img src={logo} alt={`Logo ${index + 1}`} className={logoClassName} />
+        </div>
+      ));
+    };
+
     const spans = [];
     for (let i = 0; i < numCopies; i++) {
       spans.push(
-        <span className={className} key={i} ref={i === 0 ? copyRef : null}>
-          {children}
-        </span>
+        <div className={className} key={i} ref={i === 0 ? copyRef : null}>
+          {renderLogos()}
+        </div>
       );
     }
 
@@ -118,24 +151,23 @@ export const ScrollVelocity = ({
 
   return (
     <section>
-      {texts.map((text, index) => (
-        <VelocityText
-          key={index}
-          className={className}
-          baseVelocity={index % 2 !== 0 ? -velocity : velocity}
-          scrollContainerRef={scrollContainerRef}
-          damping={damping}
-          stiffness={stiffness}
-          numCopies={numCopies}
-          velocityMapping={velocityMapping}
-          parallaxClassName={parallaxClassName}
-          scrollerClassName={scrollerClassName}
-          parallaxStyle={parallaxStyle}
-          scrollerStyle={scrollerStyle}
-        >
-          {text}&nbsp;
-        </VelocityText>
-      ))}
+      <VelocityLogos
+        logos={logos}
+        className={className}
+        logoClassName={logoClassName}
+        baseVelocity={velocity}
+        direction={direction}
+        scrollContainerRef={scrollContainerRef}
+        damping={damping}
+        stiffness={stiffness}
+        numCopies={numCopies}
+        velocityMapping={velocityMapping}
+        parallaxClassName={parallaxClassName}
+        scrollerClassName={scrollerClassName}
+        parallaxStyle={parallaxStyle}
+        scrollerStyle={scrollerStyle}
+        logoSpacing={logoSpacing}
+      />
     </section>
   );
 };

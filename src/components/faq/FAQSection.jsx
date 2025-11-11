@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
-import { Container, Row, Col, Button } from "react-bootstrap";
-import { ChevronDown, ChevronUp } from "lucide-react";
+import { useState } from "react";
 
+import { Container, Row, Col, Button } from "react-bootstrap";
+import { Minus, Plus } from "lucide-react";
+import faqVector from "../../assets/faq-vector.png";
 export default function FAQSection() {
   const faqs = [
     {
@@ -34,11 +34,11 @@ export default function FAQSection() {
   };
 
   return (
-    <section className="py-5" style={{ background: "#f4f8ff" }}>
-      <Container>
+    <section className="py-5" style={{ background: "#CEE7FE" }}>
+      <Container style={{ height: "600px" }}>
         <Row className="g-5 align-items-center">
-          <Col md={5}>
-            <h2 className="fw-bold mb-3">Freequently asked Questions</h2>
+          <Col md={6} className="position-relative">
+            <h2 className="fw-bold mb-3">Frequently Asked Questions</h2>
             <p className="text-muted mb-4">
               Have questions about our services, process, or pricing? Our FAQ
               section is here to provide clear answers and help you better
@@ -48,32 +48,51 @@ export default function FAQSection() {
               style={{
                 background: "#0d6efd",
                 border: 0,
-                padding: "10px 25px",
+                padding: "10px 35px",
                 borderRadius: "10px",
               }}
             >
               Let's Talk
             </Button>
+            <div
+              className="position-absolute"
+              style={{ top: "200px", right: "130px" }}
+            >
+              <img src={faqVector} alt="FAQ Vector" className="img-fluid" />
+            </div>
           </Col>
 
-          <Col md={7}>
+          <Col md={6}>
             {faqs.map((item, index) => (
               <div
                 key={index}
                 onClick={() => toggleFAQ(index)}
-                className="p-3 mb-3 shadow-sm rounded-3 bg-white"
-                style={{ cursor: "pointer" }}
+                className="p-4 mb-3 shadow-sm rounded-3 d-flex flex-column justify-content-center"
+                style={{
+                  cursor: "pointer",
+                  backgroundColor: openIndex === index ? "#1E6FFF" : "#E9EAF0",
+                  height: "auto",
+                  color: openIndex === index ? "white" : "black",
+                }}
               >
                 <div className="d-flex justify-content-between align-items-center">
-                  <h6 className="mb-0 fw-semibold">{item.q}</h6>
+                  <h6 className="mb-0 fw-semibold fs-5">{item.q}</h6>
                   {openIndex === index ? (
-                    <ChevronUp size={20} />
+                    <Minus size={20} />
                   ) : (
-                    <ChevronDown size={20} />
+                    <Plus size={20} />
                   )}
                 </div>
                 {openIndex === index && (
-                  <p className="text-muted small mt-2 mb-0">{item.a}</p>
+                  <p
+                    className=" mt-2 mb-0"
+                    style={{
+                      color: openIndex === index ? "white" : "black",
+                      fontSize: "1rem",
+                    }}
+                  >
+                    {item.a}
+                  </p>
                 )}
               </div>
             ))}
