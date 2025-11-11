@@ -1,5 +1,4 @@
 import { Container, Row, Col, Card } from "react-bootstrap";
-import { CheckSquare } from "lucide-react";
 import ChooseUseImage from "../../assets/programming-background-collage.png";
 
 import chooseIcon from "../../assets/choose-icon.png";
