@@ -5,7 +5,7 @@ import logo1 from "../../assets/technologies/1.png";
 import logo2 from "../../assets/technologies/2.png";
 import logo3 from "../../assets/technologies/3.png";
 
-export const TechBanner = () => {
+const Technologies = () => {
   const containerRef = useRef(null);
 
   const marqueeLogos = [logo1, logo2, logo3];
@@ -71,3 +71,4 @@ export const TechBanner = () => {
     </div>
   );
 };
+export default Technologies;

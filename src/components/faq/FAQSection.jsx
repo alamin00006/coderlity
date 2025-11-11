@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { Minus, Plus } from "lucide-react";
 import faqVector from "../../assets/faq-vector.png";
-export default function FAQSection() {
+const FAQSection = () => {
   const faqs = [
     {
       q: "What services does Codelrity provide?",
@@ -101,4 +101,5 @@ export default function FAQSection() {
       </Container>
     </section>
   );
-}
+};
+export default FAQSection;

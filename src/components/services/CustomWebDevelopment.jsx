@@ -1,7 +1,7 @@
 import CommonWebDevelopmentSection from "./CommonWebDevelopmentSection";
 import FullStackImage from "../../assets/web-development/full-stack.png";
 
-export default function CustomWebDevelopment() {
+const CustomWebDevelopment = () => {
   const contents = [
     {
       title: "Our Custom Web Development Includes:",
@@ -17,10 +17,12 @@ export default function CustomWebDevelopment() {
 
   return (
     <CommonWebDevelopmentSection
-      title="Full Stack Web Development"
-      description="We offer Full Stack Web Development to provide complete solutions for both the frontend and backend of your website. Our skilled developers build dynamic, responsive websites that follow the latest industry standards."
+      title="Custom Web Development"
+      description="We offer Custom Web Development to provide tailored solutions for your specific needs. Our skilled developers build dynamic, responsive websites that follow the latest industry standards."
       contents={contents}
       image={FullStackImage}
     />
   );
-}
+};
+
+export default CustomWebDevelopment;

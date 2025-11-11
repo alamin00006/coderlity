@@ -1,7 +1,7 @@
 import CommonWebDevelopmentSection from "./CommonWebDevelopmentSection";
 import MernImage from "../../assets/web-development/mern-stack.png";
 
-export default function MernStackDevelopment() {
+const MernStackDevelopment = () => {
   const contents = [
     {
       title: "Frontend Benefits of Mern Stack:",
@@ -22,4 +22,5 @@ export default function MernStackDevelopment() {
       image={MernImage}
     />
   );
-}
+};
+export default MernStackDevelopment;

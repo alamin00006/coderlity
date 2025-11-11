@@ -1,6 +1,6 @@
 import CommonWebDevelopmentSection from "./CommonWebDevelopmentSection";
 import SEOImage from "../../assets/web-development/seo.png";
-export default function SEOIntegration() {
+const SEOIntegration = () => {
   const contents = [
     {
       title: "Our SEO Services Include:",
@@ -22,4 +22,6 @@ export default function SEOIntegration() {
       image={SEOImage}
     />
   );
-}
+};
+
+export default SEOIntegration;

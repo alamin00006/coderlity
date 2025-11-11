@@ -1,7 +1,7 @@
 import CommonWebDevelopmentSection from "./CommonWebDevelopmentSection";
 import ECommerceImage from "../../assets/web-development/full-stack.png";
 
-export default function ECommerceDevelopment() {
+const ECommerceDevelopment = () => {
   const contents = [
     {
       title: "Our E-commerce Services Include:",
@@ -23,4 +23,6 @@ export default function ECommerceDevelopment() {
       image={ECommerceImage}
     />
   );
-}
+};
+
+export default ECommerceDevelopment;

@@ -2,7 +2,7 @@ import { Container, Row, Col, Card } from "react-bootstrap";
 import ChooseUseImage from "../../assets/programming-background-collage.png";
 
 import chooseIcon from "../../assets/choose-icon.png";
-export default function WhyChooseCodelritly() {
+const WhyChooseCoderlity = () => {
   const features = [
     {
       title: "Expert Developers",
@@ -102,4 +102,6 @@ export default function WhyChooseCodelritly() {
       </Container>
     </section>
   );
-}
+};
+
+export default WhyChooseCoderlity;

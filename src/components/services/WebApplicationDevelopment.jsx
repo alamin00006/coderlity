@@ -1,7 +1,7 @@
 import CommonWebDevelopmentSection from "./CommonWebDevelopmentSection";
 import WebAppImage from "../../assets/web-development/OBJECTS (1).png"; // replace with your web app image
 
-export default function WebApplicationDevelopment() {
+const WebApplicationDevelopment = () => {
   const contents = [
     {
       title: "Key Features of Our Web Apps:",
@@ -23,4 +23,6 @@ export default function WebApplicationDevelopment() {
       image={WebAppImage}
     />
   );
-}
+};
+
+export default WebApplicationDevelopment;

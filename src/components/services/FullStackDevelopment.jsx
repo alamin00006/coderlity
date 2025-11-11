@@ -1,7 +1,7 @@
 import CommonWebDevelopmentSection from "./CommonWebDevelopmentSection";
 import FullStackImage from "../../assets/web-development/full-stack.png";
 
-export default function FullStackWebDevelopment() {
+const FullStackWebDevelopment = () => {
   const contents = [
     {
       title: "Frontend Technologies:",
@@ -27,4 +27,5 @@ export default function FullStackWebDevelopment() {
       md={4}
     />
   );
-}
+};
+export default FullStackWebDevelopment;
